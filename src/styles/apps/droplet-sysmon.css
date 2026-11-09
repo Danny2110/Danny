@@ -1,0 +1,12 @@
+/* SysMon — hardware-monitor dark, graph-paper grid, mono numbers. */
+[data-app="droplet-sysmon"] { --surface: #0b1116; --ink: #d9f3ef; --muted: #7fa3a0; }
+[data-app="droplet-sysmon"] .app-bg {
+  background:
+    linear-gradient(rgb(20 184 166 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(20 184 166 / 0.06) 1px, transparent 1px),
+    radial-gradient(700px 320px at 50% -10%, rgb(20 184 166 / 0.18), transparent 60%), #0b1116;
+  background-size: 28px 28px, 28px 28px, auto;
+}
+[data-app="droplet-sysmon"] .app-main { font-family: ui-monospace, Menlo, monospace; }
+[data-app="droplet-sysmon"] .feature { background: rgb(20 184 166 / 0.06); border-color: rgb(20 184 166 / 0.3); }
+[data-app="droplet-sysmon"] .btn-primary { background: #14b8a6; color: #04211d; }

@@ -1,0 +1,52 @@
+{
+  "accent": "#5B8DEF",
+  "category": "Utilities",
+  "description": [
+    "Mounty lives in the menu bar and handles volumes: disks, disk images, and network shares mount and unmount from one quiet popover.",
+    "It is menu-bar only \u2014 no Dock icon \u2014 with in-app Sparkle updates and a Settings window for the details. Built with SwiftUI, Liquid Glass on macOS 26 with a material fallback underneath."
+  ],
+  "download": {
+    "kind": "file",
+    "label": "Download for Mac",
+    "note": "Unsigned build: right-click \u2192 Open on first launch.",
+    "path": "/downloads/Mounty-0.5.zip"
+  },
+  "features": [
+    {
+      "body": "Volumes, disk images, and shares in one popover, a click from the menu bar.",
+      "title": "Menu-bar mounting"
+    },
+    {
+      "body": "Liquid Glass popover on macOS 26, material fallback on earlier systems.",
+      "title": "Glass popover"
+    },
+    {
+      "body": "Automatic daily checks plus a manual menu item, handled by Sparkle 2.",
+      "title": "In-app updates"
+    }
+  ],
+  "hero": "",
+  "icon": "apps/mounty/icon.png",
+  "kind": "app",
+  "links": [],
+  "name": "Mounty",
+  "order": 4,
+  "requirements": [
+    "macOS 13 or later",
+    "Apple silicon"
+  ],
+  "screenshots": [],
+  "slug": "mounty",
+  "status": "stable",
+  "tagline": "Volumes, one click from the menu bar.",
+  "theme": {
+    "chrome": "glass",
+    "font": "system",
+    "layout": "hero-center",
+    "mode": "light",
+    "muted": "#5d6b85",
+    "radius": 20,
+    "surface": "#f2f5fd"
+  },
+  "version": "0.5"
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "droplet-clean-lock",
+  "name": "Clean Lock",
+  "tagline": "Lock the shelf while you wipe keys and trackpad",
+  "category": "System",
+  "version": "1.0.0",
+  "status": "stable",
+  "kind": "droplet",
+  "host": "Droppy",
+  "icon": "apps/droplet-clean-lock/icon.png",
+  "hero": "apps/droplet-clean-lock/shot-overview.jpg",
+  "accent": "#64748B",
+  "theme": {
+    "mode": "light",
+    "surface": "#f6f7fb",
+    "ink": "#171a21",
+    "muted": "#5b6472",
+    "radius": 16,
+    "font": "system",
+    "chrome": "solid",
+    "layout": "split"
+  },
+  "description": [
+    "Clean Lock holds Droppy's shelf open and takes it over while you wipe the keyboard, trackpad and screen, so stray taps on the shelf are ignored. Starting cleaning also blacks out every display to reveal fingerprints, with your ESC count shown on the black. Start from the shelf widget or the global shortcut (Control-Option-Command-L by default), then press ESC the set number of times (5 by default) to unlock. Blocking keys needs Accessibility, dimming can be switched off in Settings."
+  ],
+  "features": [],
+  "screenshots": [
+    {
+      "src": "apps/droplet-clean-lock/shot-overview.jpg",
+      "alt": "Clean Lock overview"
+    },
+    {
+      "src": "apps/droplet-clean-lock/shot-shelf-widget.jpg",
+      "alt": "Clean Lock on the Droppy shelf"
+    },
+    {
+      "src": "apps/droplet-clean-lock/shot-expanded-surface.jpg",
+      "alt": "Clean Lock expanded view"
+    }
+  ],
+  "requirements": [
+    "Droppy 15.3.0 or later"
+  ],
+  "download": {
+    "kind": "file",
+    "path": "/downloads/droplets/CleanLock.droplet.zip",
+    "label": "Download droplet",
+    "note": "Install from inside Droppy. Unsigned build."
+  },
+  "links": [],
+  "order": 22,
+  "featured": false
+}

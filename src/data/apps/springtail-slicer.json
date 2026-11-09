@@ -1,0 +1,66 @@
+{
+  "accent": "#FF6B35",
+  "category": "3D Printing",
+  "description": [
+    "Springtail is a small, fast, native macOS slicer. SwiftUI and SceneKit in front, a headless static build of PrusaSlicer's libslic3r behind it, and a Liquid Glass interface on top.",
+    "It is deliberately not a PrusaSlicer skin. The app never links wxWidgets, never starts OpenGL, and never loads a GUI toolkit. The window you see is SwiftUI; the slicing core is a quiet CLI process that only runs when you press Slice.",
+    "AnkerMake M5 and M5C profiles ship in the box, and finished G-code drops straight into EufyMake Sender."
+  ],
+  "download": {
+    "kind": "file",
+    "label": "Download for Mac",
+    "note": "Unsigned build: right-click \u2192 Open on first launch.",
+    "path": "/downloads/Springtail-Slicer-0.1.0.zip"
+  },
+  "features": [
+    {
+      "body": "SceneKit renders the model, the build plate, and sliced toolpaths. Orbit, pan, and zoom feel native.",
+      "title": "Native 3D canvas"
+    },
+    {
+      "body": "A static arm64 engine built from PrusaSlicer 2.9.6 with the GUI compiled out. No wxWidgets, no OpenGL.",
+      "title": "Headless libslic3r"
+    },
+    {
+      "body": "Toolpaths parsed per layer, coloured by feature type, with a layer slider and separate travel-move toggle.",
+      "title": "Real G-code preview"
+    },
+    {
+      "body": "Floating glass panels, glass buttons, and a glass layer scrubber over the 3D scene.",
+      "title": "Liquid Glass chrome"
+    },
+    {
+      "body": "AnkerMake M5 and M5C print profiles at 0.10/0.20/0.30 mm, plus Generic PLA, PETG, and ABS filament profiles.",
+      "title": "AnkerMake profiles included"
+    }
+  ],
+  "hero": "apps/springtail-slicer/shot-sliced.jpg",
+  "icon": "apps/springtail-slicer/icon.png",
+  "kind": "app",
+  "links": [],
+  "name": "Springtail Slicer",
+  "order": 1,
+  "requirements": [
+    "macOS 26 or later",
+    "Apple silicon"
+  ],
+  "screenshots": [
+    {
+      "alt": "Springtail Slicer with a sliced model and layer preview",
+      "src": "apps/springtail-slicer/shot-sliced.jpg"
+    }
+  ],
+  "slug": "springtail-slicer",
+  "status": "beta",
+  "tagline": "A native macOS slicer with a glass cockpit.",
+  "theme": {
+    "chrome": "glass",
+    "font": "system",
+    "layout": "split",
+    "mode": "dark",
+    "muted": "#a8b0c2",
+    "radius": 18,
+    "surface": "#0b0e16"
+  },
+  "version": "0.1.0"
+}

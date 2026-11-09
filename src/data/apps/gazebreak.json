@@ -1,0 +1,62 @@
+{
+  "accent": "#5AD1E6",
+  "category": "Productivity",
+  "description": [
+    "GazeBreak is a lightweight, native macOS focus timer. Pick a work duration, hide the app, and get a fullscreen nudge to rest your eyes when time is up. Built with AppKit, no dependencies.",
+    "The Settings window animates away and the app leaves the Dock while the timer runs, then restores itself. Your work and rest durations persist across launches.",
+    "The break screen is yours: custom title and message on a fullscreen, always-on-top overlay with a live countdown, progress bar, and Skip button."
+  ],
+  "download": {
+    "kind": "file",
+    "label": "Download for Mac",
+    "note": "Unsigned build: right-click \u2192 Open on first launch.",
+    "path": "/downloads/GazeBreak-1.1.0.zip"
+  },
+  "features": [
+    {
+      "body": "Type any work or rest duration in seconds or minutes. Invalid input is rejected; valid choices persist.",
+      "title": "Flexible timers"
+    },
+    {
+      "body": "Your own title and message on a fullscreen overlay with countdown, progress bar, and Skip.",
+      "title": "Custom break screen"
+    },
+    {
+      "body": "Window hides, Dock icon leaves, timer runs. Everything comes back on its own.",
+      "title": "True background focus"
+    },
+    {
+      "body": "AppKit only. Small, fast, and dependency-free.",
+      "title": "Native and light"
+    }
+  ],
+  "hero": "apps/gazebreak/shot-icon.jpg",
+  "icon": "apps/gazebreak/icon.png",
+  "kind": "app",
+  "links": [],
+  "name": "GazeBreak",
+  "order": 6,
+  "requirements": [
+    "macOS 13 or later",
+    "Apple silicon"
+  ],
+  "screenshots": [
+    {
+      "alt": "GazeBreak app icon artwork",
+      "src": "apps/gazebreak/shot-icon.jpg"
+    }
+  ],
+  "slug": "gazebreak",
+  "status": "stable",
+  "tagline": "Work a while, then rest your eyes.",
+  "theme": {
+    "chrome": "solid",
+    "font": "rounded",
+    "layout": "hero-center",
+    "mode": "light",
+    "muted": "#4f6b78",
+    "radius": 24,
+    "surface": "#eef7fa"
+  },
+  "version": "1.1.0"
+}

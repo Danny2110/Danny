@@ -1,0 +1,56 @@
+{
+  "accent": "#7CFFB2",
+  "category": "Developer Tools",
+  "description": [
+    "GlassTerm is a native macOS terminal emulator written in Swift and AppKit, with zero external dependencies. No packages, no third-party code.",
+    "The window is a sheet of glass over your wallpaper: NSVisualEffectView chrome with adjustable blur, tint, saturation, corner radius, and padding, all editable live in Settings with a preview.",
+    "Underneath the glass is a real terminal: forkpty process handling, a VT100/xterm parser with scrollback, and configurable fonts, cursor, and line spacing. Config lives in ~/.config/glassterm/config.json."
+  ],
+  "download": {
+    "kind": "none",
+    "label": "No build yet",
+    "note": "GlassTerm has no packaged build yet \u2014 check back soon."
+  },
+  "features": [
+    {
+      "body": "NSVisualEffectView stack with tint, blur radius, rounded corners, and saturation. Tune it live.",
+      "title": "Glass chrome"
+    },
+    {
+      "body": "forkpty process plus reader thread, VT100/xterm parsing, screen buffer with scrollback.",
+      "title": "Real PTY core"
+    },
+    {
+      "body": "Font family and size, line spacing, cursor style and blink, padding \u2014 every knob in a native Settings window.",
+      "title": "Set up your way"
+    },
+    {
+      "body": "One flat module, AppKit plus Foundation only, compiled with a single swiftc invocation.",
+      "title": "Zero dependencies"
+    }
+  ],
+  "hero": "",
+  "icon": "apps/glassterm/icon.png",
+  "kind": "app",
+  "links": [],
+  "name": "GlassTerm",
+  "order": 3,
+  "requirements": [
+    "macOS 13 or later",
+    "Apple silicon"
+  ],
+  "screenshots": [],
+  "slug": "glassterm",
+  "status": "beta",
+  "tagline": "A terminal made of glass.",
+  "theme": {
+    "chrome": "glass",
+    "font": "mono",
+    "layout": "split",
+    "mode": "dark",
+    "muted": "#8be8b8",
+    "radius": 14,
+    "surface": "#0a0f0c"
+  },
+  "version": "1.0.0"
+}

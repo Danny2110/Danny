@@ -1,0 +1,4 @@
+/* Icon Changer — playful purple canvas, sticker-like icon. */
+[data-app="droplet-icon-changer"] .app-bg { background: radial-gradient(700px 320px at 80% 0%, rgb(168 85 247 / 0.22), transparent 60%), radial-gradient(500px 300px at 10% 20%, rgb(236 72 153 / 0.12), transparent 60%), #f6f7fb; }
+[data-app="droplet-icon-changer"] .hero-icon img { transform: rotate(-4deg); box-shadow: 0 14px 34px rgb(168 85 247 / 0.35); }
+[data-app="droplet-icon-changer"] .btn-primary { background: linear-gradient(180deg, #b065f5, #9333ea); }

@@ -1,0 +1,58 @@
+{
+  "accent": "#9B7BFF",
+  "category": "Utilities",
+  "description": [
+    "Phonon is local text-to-speech for macOS, one keystroke away. A small native menu-bar app with no Dock icon that sends text to a local Ollama speech model and plays the audio back.",
+    "The app bundle is a few megabytes; the ~112 MB phonon model lives in Ollama, not in the app. Thirty-eight voices come with the model, from default to Captain Silas Blackwater.",
+    "Press \u2303\u2325S anywhere to speak the clipboard, or open the panel to type something. The shortcut, voice, endpoint, and launch-at-login all live in Settings."
+  ],
+  "download": {
+    "kind": "file",
+    "label": "Download for Mac",
+    "note": "Needs Ollama with the phonon model: ollama pull phonon. Unsigned build: right-click \u2192 Open on first launch.",
+    "path": "/downloads/Phonon-1.0.0.zip"
+  },
+  "features": [
+    {
+      "body": "Speak the current clipboard contents from anywhere.",
+      "title": "\u2303\u2325S speaks"
+    },
+    {
+      "body": "Thirty-eight voices ship with the model, remembered per choice.",
+      "title": "38 voices"
+    },
+    {
+      "body": "Chunked synthesis with stop and queue-drop. Never waits on the cloud.",
+      "title": "Local and fast"
+    },
+    {
+      "body": "Hotkey, voice, endpoint, and launch-at-login in one Settings window.",
+      "title": "Set up once"
+    }
+  ],
+  "hero": "",
+  "icon": "apps/phonon/icon.png",
+  "kind": "app",
+  "links": [],
+  "name": "Phonon",
+  "order": 8,
+  "requirements": [
+    "macOS 13 or later",
+    "Apple silicon",
+    "Ollama 0.40.9+ with the phonon model"
+  ],
+  "screenshots": [],
+  "slug": "phonon",
+  "status": "stable",
+  "tagline": "Local text-to-speech, one keystroke away.",
+  "theme": {
+    "chrome": "solid",
+    "font": "system",
+    "layout": "hero-center",
+    "mode": "dark",
+    "muted": "#a79fd1",
+    "radius": 16,
+    "surface": "#12101d"
+  },
+  "version": "1.0.0"
+}

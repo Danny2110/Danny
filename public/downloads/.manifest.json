@@ -1,0 +1,97 @@
+{
+  "generated": "2026-11-09",
+  "build": "ditto -c -k --sequesterRsrc --keepParent <bundle> <zip>",
+  "note": "Unsigned, un-notarized developer builds. Right-click > Open on first launch.",
+  "artifacts": [
+    {
+      "path": "public/downloads/Springtail-Slicer-0.1.0.zip",
+      "source": "/Users/danny/SpringtailSlicer/dist/Springtail Slicer.app",
+      "bytes": 20082955,
+      "sha256": "9c038cd0e16e02ecce31f78b7eb37246a68891b566d62759f6b03b7656ef5b92"
+    },
+    {
+      "path": "public/downloads/EufyMake-Sender-0.0.2.zip",
+      "source": "/Users/danny/EufyMakeSender/EufyMake Sender.app",
+      "bytes": 2266618,
+      "sha256": "3450a864d12ed44f92293da24ef2bd2713cd749086f68841f5726a26e7deedb5"
+    },
+    {
+      "path": "public/downloads/Mounty-0.5.zip",
+      "source": "/Users/danny/Mounty/Mounty.app",
+      "bytes": 3335562,
+      "sha256": "4d210168da3cc77eca3c85672d4ec1766661abfc872154ca082e08342b228462"
+    },
+    {
+      "path": "public/downloads/GazeBreak-1.1.0.zip",
+      "source": "/Users/danny/Developer/Gazebreak/Build/GazeBreak.app",
+      "bytes": 4507856,
+      "sha256": "312200eed69f3ad00cf873739efd770e34813d9027ae6c04bda683a62971c625"
+    },
+    {
+      "path": "public/downloads/Phonon-1.0.0.zip",
+      "source": "/Users/danny/Developer/Phonon/dist/Phonon.app",
+      "bytes": 188142,
+      "sha256": "1ae54d9d728650e6766f3ac6f3e29355a16c296401ebda75d5d6021f38da8b87"
+    },
+    {
+      "path": "public/downloads/droplets/Calculator.droplet.zip",
+      "source": "/Users/danny/droplet/calculator/.build/Calculator.droplet",
+      "bytes": 3379428,
+      "sha256": "291f83d86f859b5becc5fd335012610a9ab5d638212fa443891bba32b6f94c48"
+    },
+    {
+      "path": "public/downloads/droplets/ChromeDino.droplet.zip",
+      "source": "/Users/danny/droplet/chrome-dino/.build/ChromeDino.droplet",
+      "bytes": 3198890,
+      "sha256": "ee3944c307e251cfbaaa03188c52e58d6990186139fc918b9163a27ae4829a3b"
+    },
+    {
+      "path": "public/downloads/droplets/CleanLock.droplet.zip",
+      "source": "/Users/danny/droplet/clean-lock/.build/CleanLock.droplet",
+      "bytes": 3175831,
+      "sha256": "53aaed2b7c5096559718e2bad57df88aee7d838abf0e9a50d3a4ce0115b4dec0"
+    },
+    {
+      "path": "public/downloads/droplets/Iconchanger.droplet.zip",
+      "source": "/Users/danny/droplet/iconchanger/.build/Iconchanger.droplet",
+      "bytes": 1599355,
+      "sha256": "95c558da37e6cbf21e7e346d112cc1b53b8c94d9e64ce5d9c9b9ab1dd8cab109"
+    },
+    {
+      "path": "public/downloads/droplets/MacCleaner.droplet.zip",
+      "source": "/Users/danny/droplet/mac-cleaner/.build/MacCleaner.droplet",
+      "bytes": 3933796,
+      "sha256": "386810aaee210f11a5997fdc28bde5b84c4aba850c5475e5f0daf8b31981a2cc"
+    },
+    {
+      "path": "public/downloads/droplets/RaiseADroppy.droplet.zip",
+      "source": "/Users/danny/droplet/raise-a-droppy/.build/RaiseADroppy.droplet",
+      "bytes": 3512254,
+      "sha256": "399a2abfc02001e8f247c95eef55d29f70db31f386ba5fe1a85836b743296fc7"
+    },
+    {
+      "path": "public/downloads/droplets/Sysmon.droplet.zip",
+      "source": "/Users/danny/droplet/sysmon/.build/Sysmon.droplet",
+      "bytes": 3332230,
+      "sha256": "7fdd3983383e18d2ea607714c21f6e422f19ec689b601df93ec60d5acd2c93cc"
+    },
+    {
+      "path": "public/downloads/droplets/TouchpadEdge.droplet.zip",
+      "source": "/Users/danny/droplet/touchpad-edge/.build/TouchpadEdge.droplet",
+      "bytes": 1624266,
+      "sha256": "dd41238ecc3987af1b2d82376d4aaf730b88a4ec38eeab1e9596276025e9e58a"
+    },
+    {
+      "path": "public/downloads/droplets/Uninstaller.droplet.zip",
+      "source": "/Users/danny/droplet/uninstaller/.build/Uninstaller.droplet",
+      "bytes": 3359924,
+      "sha256": "11dd7bd2d13f4aa5a717a07ddcd377c60cdfbbf83d3bda7cff49bf3533b0ae38"
+    }
+  ],
+  "skipped": [
+    { "name": "Notesy", "reason": "excluded from this site build" },
+    { "name": "GlassTerm", "reason": "no built app" },
+    { "name": "Forcus", "reason": "no built app" },
+    { "name": "GlassTube", "reason": "no built app" }
+  ]
+}

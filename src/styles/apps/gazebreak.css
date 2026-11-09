@@ -1,0 +1,12 @@
+/* GazeBreak — soft sky morning: round everything, breathe. */
+[data-app="gazebreak"] .app-bg {
+  background:
+    radial-gradient(760px 360px at 50% -10%, rgb(90 209 230 / 0.25), transparent 60%),
+    radial-gradient(500px 300px at 90% 30%, rgb(255 210 150 / 0.2), transparent 60%),
+    #eef7fa;
+}
+[data-app="gazebreak"] .hero-icon img { border-radius: 50%; box-shadow: 0 12px 36px rgb(90 209 230 / 0.4); }
+[data-app="gazebreak"] .feature { background: #fff; border-radius: 24px; border-color: rgb(90 209 230 / 0.35); }
+[data-app="gazebreak"] .feature h3 { color: #0e7d99; }
+[data-app="gazebreak"] .btn-primary { background: linear-gradient(180deg, #4cc3de, #1d9ab8); border-radius: 999px; padding: 14px 30px; }
+[data-app="gazebreak"] .app-hero h1 { font-weight: 800; }

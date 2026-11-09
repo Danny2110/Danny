@@ -1,0 +1,73 @@
+/* base.css — tokens, reset, nav, footer, buttons. Loaded on every page. */
+*, *::before, *::after { box-sizing: border-box; }
+:root {
+  --accent: #4F5BD5;
+  --surface: #ffffff;
+  --ink: #171a21;
+  --muted: #5b6472;
+  --line: color-mix(in srgb, currentColor 14%, transparent);
+  --radius: 16px;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  --max: 1080px;
+}
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--surface);
+  color: var(--ink);
+  line-height: 1.55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body > main, body > .hub-main, body > .app-main { flex: 1; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
+.muted { color: var(--muted); }
+
+/* nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: saturate(1.4) blur(18px);
+  -webkit-backdrop-filter: saturate(1.4) blur(18px);
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto; padding: 12px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--ink); }
+.brand:hover { text-decoration: none; }
+.nav-links { display: flex; gap: 18px; }
+.nav-links a { color: var(--muted); font-weight: 600; font-size: 0.95rem; }
+.nav-links a[aria-current="page"] { color: var(--ink); }
+.nav-links a:hover { color: var(--ink); }
+
+/* footer */
+.site-footer { border-top: 1px solid var(--line); margin-top: 64px; }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 28px 20px 40px; }
+.footer-inner p { margin: 4px 0; }
+
+/* buttons */
+.btn {
+  display: inline-block; padding: 12px 22px; border-radius: 999px;
+  font-weight: 700; font-size: 1rem; border: 0; cursor: pointer;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { text-decoration: none; filter: brightness(1.06); }
+.btn-disabled { background: color-mix(in srgb, currentColor 12%, transparent); color: var(--muted); cursor: not-allowed; }
+.dl-note { color: var(--muted); font-size: 0.88rem; margin: 8px 0 0; }
+
+/* generic pills */
+.pill {
+  display: inline-block; font-size: 0.75rem; font-weight: 700;
+  padding: 2px 10px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--muted);
+}
+.pill-beta { color: var(--accent); border-color: var(--accent); }
+.pill-drop { color: var(--accent); border-color: var(--accent); }
+.card-cat { font-size: 0.8rem; color: var(--muted); }

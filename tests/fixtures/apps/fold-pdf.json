@@ -1,0 +1,39 @@
+{
+  "slug": "fold-pdf",
+  "name": "Fold PDF",
+  "tagline": "Drop PDFs on the Dock and they come back smaller.",
+  "category": "Utilities",
+  "version": "2.0.1",
+  "status": "stable",
+  "kind": "droplet",
+  "host": "Droppy",
+  "icon": "fold-pdf/icon.png",
+  "accent": "#FB923C",
+  "theme": {
+    "mode": "light",
+    "surface": "#fff7ed",
+    "ink": "#1f1305",
+    "muted": "#7c5c37",
+    "radius": 16,
+    "font": "system",
+    "chrome": "solid",
+    "layout": "hero-center"
+  },
+  "description": [
+    "A Droppy droplet that compresses PDFs in place, writing new files next to the originals."
+  ],
+  "features": [],
+  "screenshots": [],
+  "requirements": [
+    "macOS 26 or later",
+    "Droppy"
+  ],
+  "download": {
+    "kind": "none",
+    "label": "Install through Droppy",
+    "note": "Droplets are installed from inside Droppy."
+  },
+  "links": [],
+  "order": 3,
+  "featured": false
+}

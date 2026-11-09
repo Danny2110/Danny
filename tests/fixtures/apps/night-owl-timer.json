@@ -1,0 +1,66 @@
+{
+  "slug": "night-owl-timer",
+  "name": "Night Owl Timer",
+  "tagline": "A focus timer for the hours nobody else is awake.",
+  "category": "Productivity",
+  "version": "0.4.2",
+  "status": "beta",
+  "kind": "app",
+  "icon": "night-owl-timer/icon.png",
+  "hero": "night-owl-timer/shot-1.png",
+  "accent": "#6EE7B7",
+  "theme": {
+    "mode": "dark",
+    "surface": "#08090c",
+    "ink": "#eef1f7",
+    "muted": "#9aa3b2",
+    "radius": 24,
+    "font": "mono",
+    "chrome": "glass",
+    "layout": "split"
+  },
+  "description": [
+    "A timer window that stays out of the way, with a large remaining time and nothing else on screen.",
+    "Sessions are saved locally so you can see where the week went."
+  ],
+  "features": [
+    {
+      "title": "One window",
+      "body": "Start, pause, and reset without opening a menu."
+    },
+    {
+      "title": "Local history",
+      "body": "Session lengths are stored on your Mac only."
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "night-owl-timer/shot-1.png",
+      "alt": "Fixture screenshot"
+    },
+    {
+      "src": "night-owl-timer/shot-2.png",
+      "alt": "Fixture screenshot"
+    }
+  ],
+  "requirements": [
+    "macOS 26 or later"
+  ],
+  "download": {
+    "kind": "none",
+    "label": "Install through Droppy",
+    "note": "Fixture build not shipped."
+  },
+  "links": [
+    {
+      "label": "Source",
+      "url": "https://github.com/danny2110"
+    },
+    {
+      "label": "Changelog",
+      "url": "https://example.com/night-owl"
+    }
+  ],
+  "order": 1,
+  "featured": true
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Danny 2110",
+  "name": "Danny 2110",
+  "tagline": "Small, careful Mac apps. Each one does a single job properly.",
+  "description": "A hub for Mac apps built one at a time, with notes on what each one does and a download that works.",
+  "url": "https://danny2110.github.io",
+  "author": "Danny",
+  "theme": {
+    "mode": "light",
+    "accent": "#4F5BD5"
+  },
+  "hub": {
+    "heading": "Mac apps, made one at a time.",
+    "intro": "Every app here is built for macOS, ships as a plain download, and stays out of the way. Pick one and read what it actually does.",
+    "dropletsHeading": "Droplets for Droppy",
+    "dropletsIntro": "Small drag and drop tools that live in Droppy."
+  },
+  "footer": {
+    "note": "Built by hand. No trackers, no accounts, no analytics."
+  }
+}

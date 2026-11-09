@@ -1,0 +1,13 @@
+/* GlassTerm — the page is a terminal: mono everywhere, green phosphor glow, scanline hero. */
+[data-app="glassterm"] .app-main { font-family: ui-monospace, Menlo, Consolas, monospace; }
+[data-app="glassterm"] .app-bg {
+  background:
+    radial-gradient(900px 400px at 50% -10%, rgb(124 255 178 / 0.12), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 3px, rgb(124 255 178 / 0.015) 3px 4px),
+    #0a0f0c;
+}
+[data-app="glassterm"] .app-hero h1::after { content: "▊"; color: #7cffb2; animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+[data-app="glassterm"] .feature h3 { color: #7cffb2; font-size: 0.9rem; }
+[data-app="glassterm"] .feature { background: rgb(124 255 178 / 0.04); border-color: rgb(124 255 178 / 0.2); }
+[data-app="glassterm"] .hero-icon img { box-shadow: 0 0 44px rgb(124 255 178 / 0.35); }

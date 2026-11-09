@@ -1,0 +1,55 @@
+/* app.css — shared skeleton for every per-app page. Per-app vibe files
+   in styles/apps/<slug>.css layer on top via [data-app="..."] selectors. */
+.app-page { position: relative; }
+.app-bg {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(1200px 500px at 80% -10%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
+    var(--surface);
+}
+.app-main { max-width: var(--max); margin: 0 auto; padding: 0 20px 40px; width: 100%; }
+.crumbs { padding: 20px 0 0; font-size: 0.9rem; }
+.crumb-sep { color: var(--muted); margin: 0 4px; }
+
+.app-hero {
+  display: grid; gap: 24px; padding: 28px 0 8px;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+}
+.hero-icon img { width: 128px; height: 128px; border-radius: 28px; box-shadow: 0 12px 40px rgb(0 0 0 / 0.18); }
+.hero-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 128px; height: 128px; border-radius: 28px;
+  background: var(--accent); color: #fff; font-size: 4rem; font-weight: 800;
+}
+.hero-text h1 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); }
+.hero-text .lede { font-size: 1.2rem; color: var(--muted); margin: 6px 0 12px; max-width: 40rem; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 18px; }
+.dl-block { margin-top: 6px; }
+.hero-shot { grid-column: 1 / -1; margin-top: 8px; }
+.hero-shot img { border-radius: var(--radius); border: 1px solid var(--line); box-shadow: 0 20px 60px rgb(0 0 0 / 0.15); }
+
+.about { max-width: 46rem; font-size: 1.05rem; margin-top: 28px; }
+.features { margin-top: 36px; }
+.features h2, .shots h2, .details h2 { font-size: 1.3rem; margin: 0 0 14px; }
+.feature-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.feature { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; background: color-mix(in srgb, currentColor 3%, transparent); }
+.feature h3 { margin: 0 0 6px; font-size: 1rem; }
+.feature p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.shots { margin-top: 36px; }
+.shot-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+.shot { margin: 0; }
+.shot img { border-radius: var(--radius); border: 1px solid var(--line); }
+.details { margin-top: 36px; }
+.detail-list > div {
+  display: grid; grid-template-columns: 140px 1fr; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid var(--line);
+}
+.detail-list dt { color: var(--muted); font-size: 0.9rem; }
+.detail-list dd { margin: 0; }
+
+@media (max-width: 640px) {
+  .app-hero { grid-template-columns: 1fr; }
+  .hero-icon img, .hero-letter { width: 96px; height: 96px; border-radius: 22px; font-size: 3rem; }
+  .detail-list > div { grid-template-columns: 1fr; gap: 2px; }
+}

@@ -1,0 +1,11 @@
+/* EufyMake Sender — deep teal print room, camera-feed glow. */
+[data-app="eufymake-sender"] .app-bg {
+  background:
+    radial-gradient(900px 420px at 20% -10%, rgb(0 194 168 / 0.2), transparent 60%),
+    radial-gradient(700px 420px at 90% 20%, rgb(0 120 200 / 0.16), transparent 60%),
+    #07120f;
+}
+[data-app="eufymake-sender"] .hero-shot img { border-color: rgb(0 194 168 / 0.4); box-shadow: 0 0 0 1px rgb(0 194 168 / 0.2), 0 20px 60px rgb(0 0 0 / 0.5); }
+[data-app="eufymake-sender"] .feature { background: rgb(255 255 255 / 0.03); border-color: rgb(0 194 168 / 0.25); border-left: 3px solid #00c2a8; }
+[data-app="eufymake-sender"] .feature h3 { color: #6ff2dd; }
+[data-app="eufymake-sender"] .btn-primary { background: linear-gradient(180deg, #12d6b6, #009e83); box-shadow: 0 6px 24px rgb(0 194 168 / 0.35); }

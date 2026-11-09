@@ -1,0 +1,5 @@
+/* Raise a Droppy — cozy pet-game pastel, bouncy headings. */
+[data-app="droplet-raise-a-droppy"] .app-bg { background: radial-gradient(700px 320px at 50% -10%, rgb(244 114 182 / 0.22), transparent 60%), radial-gradient(500px 300px at 90% 10%, rgb(251 191 36 / 0.15), transparent 60%), #fdf6fa; }
+[data-app="droplet-raise-a-droppy"] .app-hero h1 { font-weight: 800; letter-spacing: -0.02em; }
+[data-app="droplet-raise-a-droppy"] .feature { background: #fff; border-radius: 20px; border-color: rgb(244 114 182 / 0.35); }
+[data-app="droplet-raise-a-droppy"] .btn-primary { background: linear-gradient(180deg, #f783ac, #ec4899); border-radius: 999px; }

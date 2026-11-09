@@ -1,0 +1,58 @@
+{
+  "slug": "loam-notes",
+  "name": "Loam Notes",
+  "tagline": "A quiet place for notes that are still growing.",
+  "category": "Writing",
+  "version": "1.2.0",
+  "status": "stable",
+  "kind": "app",
+  "icon": "loam-notes/icon.png",
+  "accent": "#8A6B4F",
+  "theme": {
+    "mode": "light",
+    "surface": "#f4efe7",
+    "ink": "#241d16",
+    "muted": "#6b5d4f",
+    "radius": 10,
+    "font": "serif",
+    "chrome": "flat",
+    "layout": "editorial"
+  },
+  "description": [
+    "Loam Notes keeps a single folder of plain text files and gets out of the way while you write.",
+    "Everything is stored on disk in a format you can read without the app."
+  ],
+  "features": [
+    {
+      "title": "Plain files",
+      "body": "Notes are Markdown files in a folder you choose."
+    },
+    {
+      "title": "Quiet editor",
+      "body": "One column, no sidebar noise, keyboard first."
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "loam-notes/shot-1.png",
+      "alt": "Fixture screenshot"
+    }
+  ],
+  "requirements": [
+    "macOS 26 or later",
+    "Apple silicon"
+  ],
+  "download": {
+    "kind": "none",
+    "label": "Install through Droppy",
+    "note": "Fixture build not shipped."
+  },
+  "links": [
+    {
+      "label": "Release notes",
+      "url": "https://example.com/loam-notes"
+    }
+  ],
+  "order": 2,
+  "featured": false
+}

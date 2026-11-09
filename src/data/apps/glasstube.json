@@ -1,0 +1,51 @@
+{
+  "accent": "#FF3B30",
+  "category": "Media",
+  "description": [
+    "GlassTube is a SwiftUI YouTube wrapper for macOS with Liquid Glass chrome.",
+    "The browser frame gets out of the way: glass toolbars, per-site theming, and tabs that feel like the system. The Xcode project uses file-system-synchronized folders, so the codebase stays as small as the app feels."
+  ],
+  "download": {
+    "kind": "none",
+    "label": "No build yet",
+    "note": "GlassTube is ad-hoc signed for local use only \u2014 no distributable build yet."
+  },
+  "features": [
+    {
+      "body": "YouTube in a native SwiftUI window with floating glass toolbars.",
+      "title": "Glass browser chrome"
+    },
+    {
+      "body": "Themes that follow the video page instead of fighting it.",
+      "title": "YouTube theming"
+    },
+    {
+      "body": "Tabs with hierarchical SF Symbols, tuned for video hopping.",
+      "title": "Native tabs"
+    }
+  ],
+  "hero": "",
+  "icon": "apps/glasstube/icon.png",
+  "kind": "app",
+  "links": [],
+  "name": "GlassTube",
+  "order": 7,
+  "requirements": [
+    "macOS 26 or later",
+    "Apple silicon"
+  ],
+  "screenshots": [],
+  "slug": "glasstube",
+  "status": "beta",
+  "tagline": "YouTube in a glass window.",
+  "theme": {
+    "chrome": "glass",
+    "font": "system",
+    "layout": "split",
+    "mode": "dark",
+    "muted": "#c78f96",
+    "radius": 20,
+    "surface": "#160a0d"
+  },
+  "version": "0.1"
+}

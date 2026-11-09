@@ -1,0 +1,53 @@
+{
+  "slug": "droplet-chrome-dino",
+  "name": "Chrome Dino",
+  "tagline": "The offline dino runner, on your shelf",
+  "category": "Productivity",
+  "version": "1.0.2",
+  "status": "stable",
+  "kind": "droplet",
+  "host": "Droppy",
+  "icon": "apps/droplet-chrome-dino/icon.png",
+  "hero": "apps/droplet-chrome-dino/shot-overview.jpg",
+  "accent": "#22C55E",
+  "theme": {
+    "mode": "light",
+    "surface": "#f6f7fb",
+    "ink": "#171a21",
+    "muted": "#5b6472",
+    "radius": 16,
+    "font": "system",
+    "chrome": "solid",
+    "layout": "split"
+  },
+  "description": [
+    "Chrome Dino brings the offline dinosaur runner to Droppy's shelf. Tap or press jump to hop the cacti, duck under pterodactyls by staying grounded, chase your high score, and open the takeover for a bigger run. Play as the dino or as a water droplet.\n\nEvery 10,000 points the run pauses for a message, then carries on. The shelf widget is the full game. The expanded surface is the same run with more room, and Settings keeps your high score and options."
+  ],
+  "features": [],
+  "screenshots": [
+    {
+      "src": "apps/droplet-chrome-dino/shot-overview.jpg",
+      "alt": "Chrome Dino overview"
+    },
+    {
+      "src": "apps/droplet-chrome-dino/shot-shelf-widget.jpg",
+      "alt": "Chrome Dino on the Droppy shelf"
+    },
+    {
+      "src": "apps/droplet-chrome-dino/shot-expanded-surface.jpg",
+      "alt": "Chrome Dino expanded view"
+    }
+  ],
+  "requirements": [
+    "Droppy 15.3.0 or later"
+  ],
+  "download": {
+    "kind": "file",
+    "path": "/downloads/droplets/ChromeDino.droplet.zip",
+    "label": "Download droplet",
+    "note": "Install from inside Droppy. Unsigned build."
+  },
+  "links": [],
+  "order": 21,
+  "featured": false
+}

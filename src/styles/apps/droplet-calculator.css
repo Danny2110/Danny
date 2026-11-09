@@ -1,0 +1,4 @@
+/* Calculator — dense blue instrument panel, mono digits. */
+[data-app="droplet-calculator"] .app-bg { background: radial-gradient(700px 320px at 80% -10%, rgb(59 130 246 / 0.2), transparent 60%), #f6f7fb; }
+[data-app="droplet-calculator"] .feature, [data-app="droplet-calculator"] .shot img { font-family: ui-monospace, Menlo, monospace; }
+[data-app="droplet-calculator"] .btn-primary { background: linear-gradient(180deg, #4f8ff7, #2563eb); }

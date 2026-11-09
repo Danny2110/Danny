@@ -1,0 +1,53 @@
+{
+  "slug": "droplet-uninstaller",
+  "name": "Uninstaller",
+  "tagline": "Fully uninstall apps, leftovers included",
+  "category": "System",
+  "version": "1.0.0",
+  "status": "stable",
+  "kind": "droplet",
+  "host": "Droppy",
+  "icon": "apps/droplet-uninstaller/icon.png",
+  "hero": "apps/droplet-uninstaller/shot-overview.jpg",
+  "accent": "#EF4444",
+  "theme": {
+    "mode": "light",
+    "surface": "#f6f7fb",
+    "ink": "#171a21",
+    "muted": "#5b6472",
+    "radius": 16,
+    "font": "system",
+    "chrome": "solid",
+    "layout": "split"
+  },
+  "description": [
+    "Drop an app on Uninstaller to find everything it left behind: caches, preferences, containers, scripts and launch agents. You review every file first, then it quits the app and moves it all to the Trash."
+  ],
+  "features": [],
+  "screenshots": [
+    {
+      "src": "apps/droplet-uninstaller/shot-overview.jpg",
+      "alt": "Uninstaller overview"
+    },
+    {
+      "src": "apps/droplet-uninstaller/shot-shelf-widget.jpg",
+      "alt": "Uninstaller on the Droppy shelf"
+    },
+    {
+      "src": "apps/droplet-uninstaller/shot-expanded-surface.jpg",
+      "alt": "Uninstaller expanded view"
+    }
+  ],
+  "requirements": [
+    "Droppy 15.3.0 or later"
+  ],
+  "download": {
+    "kind": "file",
+    "path": "/downloads/droplets/Uninstaller.droplet.zip",
+    "label": "Download droplet",
+    "note": "Install from inside Droppy. Unsigned build."
+  },
+  "links": [],
+  "order": 28,
+  "featured": false
+}

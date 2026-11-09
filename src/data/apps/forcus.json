@@ -1,0 +1,56 @@
+{
+  "accent": "#B48CFF",
+  "category": "Productivity",
+  "description": [
+    "Forcus is a macOS menu-bar app that locks your computer to a single focus activity \u2014 read for ten minutes, write for twenty \u2014 on login or on demand, until the timer completes.",
+    "Pick a focus screen, start the session, and everything else stays out of reach. Create and manage custom focus screens with their own durations, allowed apps and websites, and lock modes.",
+    "It runs on this Mac only, with a local SwiftData database and no server. Calm system windows, an accent color you can change, and a keyboard shortcut for everything."
+  ],
+  "download": {
+    "kind": "none",
+    "label": "No build yet",
+    "note": "Forcus has no packaged build yet \u2014 check back soon."
+  },
+  "features": [
+    {
+      "body": "A chosen focus screen can launch automatically the first time you open the Mac in the morning.",
+      "title": "Auto-start on login"
+    },
+    {
+      "body": "Click the menu-bar icon or press the global shortcut to start any configured session immediately.",
+      "title": "Quick-start"
+    },
+    {
+      "body": "Name, duration, allowed apps and websites, and lock mode per screen.",
+      "title": "Custom focus screens"
+    },
+    {
+      "body": "Focus overlay plus macOS-level app locking while a session runs.",
+      "title": "Real locking"
+    }
+  ],
+  "hero": "",
+  "icon": "apps/forcus/icon.png",
+  "kind": "app",
+  "links": [],
+  "name": "Forcus",
+  "order": 5,
+  "requirements": [
+    "macOS 26 or later",
+    "Apple silicon"
+  ],
+  "screenshots": [],
+  "slug": "forcus",
+  "status": "beta",
+  "tagline": "Lock the Mac to one thing until the timer ends.",
+  "theme": {
+    "chrome": "flat",
+    "font": "system",
+    "layout": "editorial",
+    "mode": "light",
+    "muted": "#6f6583",
+    "radius": 12,
+    "surface": "#f5f1fc"
+  },
+  "version": "0.1"
+}

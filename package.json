@@ -1,0 +1,12 @@
+{
+  "name": "danny2110.github.io",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Danny 2110 — small, careful Mac apps, one at a time.",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node scripts/check-links.mjs dist",
+    "test": "node build.mjs --data tests/fixtures/apps --assets tests/fixtures/files --out dist-test && node scripts/check-links.mjs dist-test"
+  }
+}
