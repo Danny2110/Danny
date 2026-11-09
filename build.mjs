@@ -240,14 +240,14 @@ function glassCardHTML(app, i) {
   const iconHTML = icon
     ? `<img class="card__icon" src="${esc(icon)}" alt="" loading="lazy" />`
     : `<div class="card__icon card__icon--tile">${esc(app.name.slice(0, 1))}</div>`;
-  const href = `/${esc(app.slug)}/`;
+  const href = app.slug === "notesy" ? "https://danny2110.github.io/Notesy/" : `/${esc(app.slug)}/`;
   const inner = `
     ${iconHTML}
     <div class="card__body">
       <span class="card__badge">${esc(app.name)}</span>
       <p class="card__desc">${esc(app.tagline)}</p>
     </div>`;
-  return `<a class="card" style="animation-delay:${i * 45}ms" href="${esc(href)}">${inner}</a>`;
+  return `<a class="card${app.featured ? " card-featured" : ""}" style="animation-delay:${i * 45}ms" href="${esc(href)}">${inner}</a>`;
 }
 
 function hubHTML(site, apps) {

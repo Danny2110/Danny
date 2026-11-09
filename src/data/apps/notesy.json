@@ -1,0 +1,42 @@
+{
+  "slug": "notesy",
+  "name": "Notesy",
+  "tagline": "An easy to use notes app with a canvas",
+  "description": [
+    "Notesy is a native macOS notes app designed for focus and speed. It features a HapticCanvasView for tactile input and a LiquidGlassBoxView for a modern, glass-like UI.",
+    "Built for the modern Mac, it integrates deeply with system technologies to ensure your notes are always available, fast, and secure."
+  ],
+  "version": "1.0.0",
+  "status": "stable",
+  "category": "Productivity",
+  "accent": "#F5A623",
+  "theme": {
+    "mode": "light",
+    "surface": "#ffffff",
+    "ink": "#171a21",
+    "muted": "#5b6472",
+    "radius": 16,
+    "font": "system",
+    "chrome": "glass",
+    "layout": "split"
+  },
+  "icon": "apps/notesy/icon.png",
+  "hero": "apps/notesy/shot-main.jpg",
+  "featured": true,
+  "order": 0,
+  "download": {
+    "kind": "file",
+    "path": "/downloads/Notesy-1.0.0.zip",
+    "label": "Download for Mac"
+  },
+  "features": [
+    {
+      "title": "Haptic Canvas",
+      "body": "Experience a tactile note-taking feel with our proprietary HapticCanvasView."
+    },
+    {
+      "title": "Liquid Glass UI",
+      "body": "A clean, modern interface that fits perfectly into the macOS aesthetic."
+    }
+  ]
+}
