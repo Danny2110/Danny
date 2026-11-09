@@ -5,7 +5,7 @@
 // src/scripts, and public/ verbatim. No packages, no network. Node 24 stdlib.
 
 import { readFile, writeFile, readdir, mkdir, cp, rm } from "node:fs/promises";
-import { existsSync, statSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
@@ -104,7 +104,9 @@ function headHTML({ title, description, site, app, extraCSS = [] }) {
   const bodyVars = v
     ? `--surface:${esc(v.surface)};--ink:${esc(v.ink)};--muted:${esc(v.muted)};--accent:${esc(v.accent)};--radius:${v.radius}px;--font-body:${fontStack(v.font)}`
     : "";
-  const css = ["/styles/base.css", app ? "/styles/app.css" : "/styles/hub.css", ...extraCSS]
+  const css = (app
+    ? ["/styles/base.css", "/styles/app.css", ...extraCSS]
+    : ["/styles/hub.css", ...extraCSS])
     .map((h) => `  <link rel="stylesheet" href="${h}">`).join("\n");
   return `<!DOCTYPE html>
 <html lang="en"${v ? ` data-app="${esc(app.slug)}" data-mode="${v.mode}" data-chrome="${esc(v.chrome)}" data-layout="${esc(v.layout)}"` : ` data-mode="${esc(site.theme?.mode || "light")}"`}>
@@ -173,6 +175,31 @@ function imgTag(rel, alt, extra) {
 }
 
 // ---------------- hub ----------------
+let LG_MAP_B64 = "";
+try { LG_MAP_B64 = readFileSync(path.join(ROOT, "src/assets/site/lg-map.b64"), "utf8").trim(); } catch { /* glass filter degrades to blur */ }
+
+function glassDefsHTML() {
+  return `<svg class="glassdefs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="lg-filter" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
+      <feImage x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="map"
+        href="data:image/png;base64,${LG_MAP_B64}" />
+      <feDisplacementMap in="SourceGraphic" in2="map" result="dispRed" scale="-20" xChannelSelector="R" yChannelSelector="G" />
+      <feColorMatrix in="dispRed" type="matrix" result="red" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" />
+      <feDisplacementMap in="SourceGraphic" in2="map" result="dispGreen" scale="-24" xChannelSelector="R" yChannelSelector="G" />
+      <feColorMatrix in="dispGreen" type="matrix" result="green" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" />
+      <feDisplacementMap in="SourceGraphic" in2="map" result="dispBlue" scale="-28" xChannelSelector="R" yChannelSelector="G" />
+      <feColorMatrix in="dispBlue" type="matrix" result="blue" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" />
+      <feBlend in="red" in2="green" mode="screen" result="rg" />
+      <feBlend in="rg" in2="blue" mode="screen" result="output" />
+      <feGaussianBlur in="output" stdDeviation="3" />
+    </filter>
+  </defs>
+</svg>`;
+}
+
+const GLASS_GATE = `<script>\n(function () {\n  var isSafari = /^((?!chrome|chromium|crios|android|fxios).)*safari/i.test(navigator.userAgent);\n  var ok = false;\n  try {\n    ok = !isSafari && window.CSS && CSS.supports && CSS.supports("backdrop-filter", "url(#lg-filter)");\n  } catch (e) { ok = false; }\n  document.documentElement.classList.toggle("svg-glass", ok);\n})();\n<\/script>`;
+
 function assetURL(rel) {
   if (!rel) return null;
   if (/^https?:\/\//.test(rel)) return rel;
@@ -208,52 +235,42 @@ function cardHTML(app, featured) {
   </a>`;
 }
 
+function glassCardHTML(app, i) {
+  const icon = assetURL(app.icon);
+  const iconHTML = icon
+    ? `<img class="card__icon" src="${esc(icon)}" alt="" loading="lazy" />`
+    : `<div class="card__icon card__icon--tile">${esc(app.name.slice(0, 1))}</div>`;
+  const href = `/${esc(app.slug)}/`;
+  const inner = `
+    ${iconHTML}
+    <div class="card__body">
+      <span class="card__badge">${esc(app.name)}</span>
+      <p class="card__desc">${esc(app.tagline)}</p>
+    </div>`;
+  return `<a class="card" style="animation-delay:${i * 45}ms" href="${esc(href)}">${inner}</a>`;
+}
+
 function hubHTML(site, apps) {
-  const featured = apps.find((a) => a.featured) || apps[0];
-  const rest = apps.filter((a) => a !== featured);
-  const cats = [...new Set(apps.map((a) => a.category).filter(Boolean))].sort();
-  return `${headHTML({ title: `${site.title} — Mac apps`, description: site.description || site.tagline || "", site })}
-<body class="hub" style="--accent:${esc(site.theme?.accent || "#4F5BD5")}">
-${navHTML(site, null)}
-<main class="hub-main">
-  <section class="hub-hero">
-    <h1>${esc(site.hub?.heading || site.title)}</h1>
-    <p class="lede">${esc(site.hub?.intro || site.tagline || "")}</p>
-    <div class="hub-tools">
-      <input id="search" type="search" placeholder="Search apps…" aria-label="Search apps" autocomplete="off">
-      <div class="cat-row" role="group" aria-label="Filter by category">
-        <button class="cat-btn is-on" data-cat="">All</button>
-        ${cats.map((c) => `<button class="cat-btn" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}
-      </div>
-    </div>
-  </section>
-  <section class="app-section app-featured" id="featured">
-    <p class="eyebrow">Featured</p>
-    <div class="app-grid app-grid-featured">
-      ${cardHTML(featured, true)}
-    </div>
-  </section>
-  <section class="app-section" id="apps">
-    <h2>All apps</h2>
-    <div class="app-grid">
-      ${rest.map((a) => cardHTML(a, false)).join("\n      ")}
-    </div>
-  </section>
-  <p class="no-results" id="no-results" hidden>No apps match that search.</p>
-  <section class="hub-about">
-    <div>
-      <h2>Built by hand, one at a time.</h2>
-      <p>${esc(site.footer?.about || "Every app here is designed, written, and packaged by one person on one Mac. No trackers, no accounts, no telemetry — just small tools that do their job.")}</p>
-    </div>
-    <div class="hub-stats">
-      <div class="hub-stat"><b>${apps.length}</b><span>apps</span></div>
-      <div class="hub-stat"><b>0</b><span>trackers</span></div>
-      <div class="hub-stat"><b>100%</b><span>free</span></div>
-    </div>
+  const identityName = site.author || site.name || site.title;
+  const avatar = existsSync(path.join(ROOT, "src/assets/site/avatar.png")) ? "/assets/site/avatar.png" : "/assets/site/favicon.png";
+  return `${headHTML({ title: `${identityName} — Apps`, description: site.description || site.tagline || "", site })}
+<body class="hub">
+${glassDefsHTML()}
+<main class="page">
+  <header class="identity">
+    <img class="identity__avatar" src="${avatar}" alt="" />
+    <h1 class="identity__name">${esc(identityName)}</h1>
+  </header>
+  <section class="grid" id="grid">
+    ${apps.map((a, i) => glassCardHTML(a, i)).join("\n    ")}
   </section>
 </main>
-${footerHTML(site, apps)}
-<script src="/scripts/hub.js" defer></script>
+<footer class="hub-foot">
+  <a href="/downloads/">Downloads</a>
+  <span aria-hidden="true">·</span>
+  <a href="https://github.com/Danny2110">GitHub</a>
+</footer>
+${GLASS_GATE}
 </body>
 </html>
 `;
@@ -315,8 +332,8 @@ ${footerHTML(site, [app])}
 
 // ---------------- downloads index ----------------
 function downloadsHTML(site, apps) {
-  let manifest = null;
-  try { manifest = JSON.parse(awaitSafeReadManifest()); } catch { /* optional */ }
+  const identityName = site.author || site.name || site.title;
+  const avatar = existsSync(path.join(ROOT, "src/assets/site/avatar.png")) ? "/assets/site/avatar.png" : "/assets/site/favicon.png";
   const withFiles = apps.filter((a) => a.download?.kind === "file" && a.download?.path);
   const rows = withFiles.map((a) => {
     let size = null;
@@ -324,25 +341,27 @@ function downloadsHTML(site, apps) {
     return `<tr><td><a href="/${esc(a.slug)}/">${esc(a.name)}</a></td><td>v${esc(a.version || "—")}</td><td><a href="${esc(a.download.path)}" download>${esc(a.download.path.split("/").pop())}</a></td><td>${esc(size || "—")}</td></tr>`;
   }).join("\n      ");
   return `${headHTML({ title: `Downloads — ${site.title}`, description: `Every downloadable build for ${site.name}.`, site })}
-<body class="hub downloads">
-${navHTML(site, "downloads")}
-<main class="hub-main">
-  <section class="hub-hero"><h1>Downloads</h1>
-  <p class="lede">Every build in one place. All apps are unsigned developer builds: right-click → Open on first launch.</p></section>
-  <section class="app-section"><div class="table-wrap"><table class="dl-table">
+<body class="hub dl-page">
+<main class="page">
+  <header class="identity">
+    <a href="/"><img class="identity__avatar" src="${avatar}" alt="" /></a>
+    <div>
+      <h1 class="dl-title">Downloads</h1>
+      <p class="dl-sub">Every build in one place. Unsigned developer builds: right-click → Open on first launch.</p>
+    </div>
+  </header>
+  <div class="table-wrap"><table class="dl-table">
     <thead><tr><th>App</th><th>Version</th><th>File</th><th>Size</th></tr></thead>
     <tbody>${rows}</tbody>
   </table></div>
-  ${manifest?.note ? `<p class="muted">${esc(manifest.note)}</p>` : ""}
-  </section>
 </main>
-${footerHTML(site, apps)}
-<script src="/scripts/hub.js" defer></script>
+<footer class="hub-foot">
+  <a href="/">← All apps</a>
+</footer>
 </body>
 </html>
 `;
 }
-function awaitSafeReadManifest() { return ""; }
 
 // ---------------- build ----------------
 async function readJSON(p) { return JSON.parse(await readFile(p, "utf8")); }
