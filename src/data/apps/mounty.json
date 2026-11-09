@@ -7,9 +7,9 @@
   ],
   "download": {
     "kind": "file",
+    "path": "/downloads/Mounty-0.5.zip",
     "label": "Download for Mac",
-    "note": "Unsigned build: right-click \u2192 Open on first launch.",
-    "path": "/downloads/Mounty-0.5.zip"
+    "note": "Unsigned build: right-click \u2192 Open on first launch."
   },
   "features": [
     {

@@ -6,9 +6,10 @@
     "The browser frame gets out of the way: glass toolbars, per-site theming, and tabs that feel like the system. The Xcode project uses file-system-synchronized folders, so the codebase stays as small as the app feels."
   ],
   "download": {
-    "kind": "none",
-    "label": "No build yet",
-    "note": "GlassTube is ad-hoc signed for local use only \u2014 no distributable build yet."
+    "kind": "file",
+    "path": "/downloads/GlassTube-0.1.zip",
+    "label": "Download for Mac",
+    "note": "Debug-signed beta, no custom icon yet. Right-click \u2192 Open on first launch."
   },
   "features": [
     {
@@ -31,7 +32,7 @@
   "name": "GlassTube",
   "order": 7,
   "requirements": [
-    "macOS 26 or later",
+    "macOS 27 or later",
     "Apple silicon"
   ],
   "screenshots": [],

@@ -8,9 +8,9 @@
   ],
   "download": {
     "kind": "file",
+    "path": "/downloads/Speechy-1.0.0.zip",
     "label": "Download for Mac",
-    "note": "Needs Ollama with the phonon model: ollama pull phonon. Unsigned build: right-click \u2192 Open on first launch.",
-    "path": "/downloads/Speechy-1.0.0.zip"
+    "note": "Needs Ollama with the phonon model: ollama pull phonon. Unsigned build: right-click \u2192 Open on first launch."
   },
   "features": [
     {

@@ -30,8 +30,32 @@
     {
       "path": "public/downloads/Speechy-1.0.0.zip",
       "source": "/Users/danny/Developer/Phonon/dist/Phonon.app",
-      "bytes": 188142,
-      "sha256": "1ae54d9d728650e6766f3ac6f3e29355a16c296401ebda75d5d6021f38da8b87"
+      "bytes": 162596,
+      "sha256": "a13a0175b3a6b77b52eaa68bb0faa3e747724d420b47089092a90b85af575ee2"
+    },
+    {
+      "path": "public/downloads/Forcus-0.1.zip",
+      "source": "/Users/danny/Documents/Documents - Daniel\u2019s MacBook Air/Forcus.app",
+      "bytes": 2179118,
+      "sha256": "802dba921f8e5ee806a86e69f440efb6fd42d92c00b3ea93862bdf586b0eaa61"
+    },
+    {
+      "path": "public/downloads/Speechy-1.0.0.zip",
+      "source": "/Users/danny/Documents/Documents - Daniel\u2019s MacBook Air/Speechy.app",
+      "bytes": 162596,
+      "sha256": "a13a0175b3a6b77b52eaa68bb0faa3e747724d420b47089092a90b85af575ee2"
+    },
+    {
+      "path": "public/downloads/Termifull-1.0.zip",
+      "source": "/Users/danny/Documents/Documents - Daniel\u2019s MacBook Air/Termifull.app",
+      "bytes": 257564,
+      "sha256": "bc95043d3a430de4240a773ef56697718b16557e2367fc381e5504f1d56fbb79"
+    },
+    {
+      "path": "public/downloads/GlassTube-0.1.zip",
+      "source": "/Users/danny/Documents/Documents - Daniel\u2019s MacBook Air/GlassTube.app",
+      "bytes": 219819,
+      "sha256": "0315243673f991908dae85a69d139ec3f3db373ec2748d1fd32127ee5c058d3f"
     }
   ],
   "skipped": [

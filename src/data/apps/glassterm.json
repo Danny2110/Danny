@@ -7,9 +7,10 @@
     "Underneath the glass is a real terminal: forkpty process handling, a VT100/xterm parser with scrollback, and configurable fonts, cursor, and line spacing. Config lives in ~/.config/glassterm/config.json."
   ],
   "download": {
-    "kind": "none",
-    "label": "No build yet",
-    "note": "GlassTerm has no packaged build yet \u2014 check back soon."
+    "kind": "file",
+    "path": "/downloads/Termifull-1.0.zip",
+    "label": "Download for Mac",
+    "note": "Ships as Termifull.app (GlassTerm is its display name). Unsigned build: right-click \u2192 Open on first launch."
   },
   "features": [
     {
@@ -42,7 +43,7 @@
   "screenshots": [],
   "slug": "glassterm",
   "status": "beta",
-  "tagline": "A terminal made of glass.",
+  "tagline": "A terminal made of glass. Ships as Termifull.",
   "theme": {
     "chrome": "glass",
     "font": "mono",
@@ -52,5 +53,5 @@
     "radius": 14,
     "surface": "#0a0f0c"
   },
-  "version": "1.0.0"
+  "version": "1.0"
 }

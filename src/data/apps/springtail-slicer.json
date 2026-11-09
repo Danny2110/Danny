@@ -8,9 +8,9 @@
   ],
   "download": {
     "kind": "file",
+    "path": "/downloads/Springtail-Slicer-0.1.0.zip",
     "label": "Download for Mac",
-    "note": "Unsigned build: right-click \u2192 Open on first launch.",
-    "path": "/downloads/Springtail-Slicer-0.1.0.zip"
+    "note": "Unsigned build: right-click \u2192 Open on first launch."
   },
   "features": [
     {
