@@ -7,7 +7,5 @@
 }
 [data-app="springtail-slicer"] .app-hero h1 { letter-spacing: -0.02em; }
 [data-app="springtail-slicer"] .hero-shot img { border-color: rgb(255 107 53 / 0.35); }
-[data-app="springtail-slicer"] .feature { background: rgb(255 255 255 / 0.04); border-color: rgb(255 255 255 / 0.1); }
-[data-app="springtail-slicer"] .feature h3 { font-family: ui-monospace, Menlo, monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.06em; color: #ffb08a; }
 [data-app="springtail-slicer"] .btn-primary { background: linear-gradient(180deg, #ff8a4d, #f4561f); box-shadow: 0 6px 24px rgb(255 107 53 / 0.4); }
 [data-app="springtail-slicer"] .detail-list dt { font-family: ui-monospace, Menlo, monospace; text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.08em; }

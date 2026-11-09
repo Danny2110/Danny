@@ -5,7 +5,6 @@
     #f2f5fd;
 }
 [data-app="mounty"] .hero-icon img { border-radius: 30px; }
-[data-app="mounty"] .feature { background: #fff; border-color: rgb(91 141 239 / 0.25); box-shadow: 0 2px 12px rgb(91 141 239 / 0.08); }
 [data-app="mounty"] .btn-primary { background: linear-gradient(180deg, #6f9bf5, #3f6fe0); }
 [data-app="mounty"] .detail-list > div { background: #fff; border: 1px solid rgb(91 141 239 / 0.18); border-radius: 12px; padding: 10px 14px; margin-bottom: 8px; }
 [data-app="mounty"] .detail-list > div + div { border-top: 1px solid rgb(91 141 239 / 0.18); }

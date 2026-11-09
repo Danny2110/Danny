@@ -130,11 +130,21 @@ function navHTML(site, current) {
   </div></header>`;
 }
 
-function footerHTML(site) {
+function footerHTML(site, apps) {
+  const appLinks = (apps || []).map((a) => `<li><a href="/${esc(a.slug)}/">${esc(a.name)}</a></li>`).join("");
   return `<footer class="site-footer"><div class="footer-inner">
-    <p><strong>${esc(site.name || "")}</strong> — ${esc(site.tagline || "")}</p>
-    <p class="muted">${esc(site.footer?.note || "")}</p>
-  </div></footer>`;
+    <div class="footer-brand">
+      <a class="brand" href="/"><img src="/assets/site/favicon.svg" alt="" width="24" height="24"><span>${esc(site.name || site.title)}</span></a>
+      <p>${esc(site.tagline || "")}</p>
+    </div>
+    ${appLinks ? `<div class="footer-col"><h3>Apps</h3><ul>${appLinks}</ul></div>` : ""}
+    <div class="footer-col"><h3>Site</h3><ul>
+      <li><a href="/">All apps</a></li>
+      <li><a href="/downloads/">Downloads</a></li>
+      <li><a href="https://github.com/Danny2110">GitHub</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-base">${esc(site.footer?.note || "")}</div></footer>`;
 }
 
 function pillHTML(app) {
@@ -230,8 +240,19 @@ ${navHTML(site, null)}
     </div>
   </section>
   <p class="no-results" id="no-results" hidden>No apps match that search.</p>
+  <section class="hub-about">
+    <div>
+      <h2>Built by hand, one at a time.</h2>
+      <p>${esc(site.footer?.about || "Every app here is designed, written, and packaged by one person on one Mac. No trackers, no accounts, no telemetry — just small tools that do their job.")}</p>
+    </div>
+    <div class="hub-stats">
+      <div class="hub-stat"><b>${apps.length}</b><span>apps</span></div>
+      <div class="hub-stat"><b>0</b><span>trackers</span></div>
+      <div class="hub-stat"><b>100%</b><span>free</span></div>
+    </div>
+  </section>
 </main>
-${footerHTML(site)}
+${footerHTML(site, apps)}
 <script src="/scripts/hub.js" defer></script>
 </body>
 </html>
@@ -285,7 +306,7 @@ ${navHTML(site, app.slug)}
     </dl>
   </section>
 </main>
-${footerHTML(site)}
+${footerHTML(site, [app])}
 <script src="/scripts/hub.js" defer></script>
 </body>
 </html>
@@ -315,7 +336,7 @@ ${navHTML(site, "downloads")}
   ${manifest?.note ? `<p class="muted">${esc(manifest.note)}</p>` : ""}
   </section>
 </main>
-${footerHTML(site)}
+${footerHTML(site, apps)}
 <script src="/scripts/hub.js" defer></script>
 </body>
 </html>

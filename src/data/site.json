@@ -11,9 +11,10 @@
   },
   "hub": {
     "heading": "Mac apps, made one at a time.",
-    "intro": "Eight small apps for macOS. Each one does a single job properly — download it and it just runs."
+    "intro": "Eight small apps for macOS. Each one does a single job properly \u2014 download it and it just runs."
   },
   "footer": {
-    "note": "Built by hand. No trackers, no accounts, no analytics."
+    "note": "Built by hand. No trackers, no accounts, no analytics.",
+    "about": "Every app here is designed, written, and packaged by one person on one Mac. No trackers, no accounts, no telemetry \u2014 just small tools that do their job."
   }
 }

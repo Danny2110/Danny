@@ -5,7 +5,5 @@
     #160a0d;
 }
 [data-app="glasstube"] .app-hero h1 { letter-spacing: -0.03em; font-weight: 800; }
-[data-app="glasstube"] .feature { background: rgb(255 255 255 / 0.05); border-color: rgb(255 255 255 / 0.12); backdrop-filter: blur(12px); }
-[data-app="glasstube"] .feature h3 { color: #ff8a80; }
 [data-app="glasstube"] .hero-icon img { box-shadow: 0 0 50px rgb(255 59 48 / 0.45); }
 [data-app="glasstube"] .btn-primary { background: linear-gradient(180deg, #ff5147, #d21f14); box-shadow: 0 6px 24px rgb(255 59 48 / 0.4); }
