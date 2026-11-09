@@ -1,5 +1,0 @@
-/* Mac Cleaner — fresh teal sweep, tidy checklist rows. */
-[data-app="droplet-mac-cleaner"] .app-bg { background: radial-gradient(700px 320px at 20% -10%, rgb(13 148 136 / 0.2), transparent 60%), #f6f7fb; }
-[data-app="droplet-mac-cleaner"] .detail-list > div { background: #fff; border: 1px solid rgb(13 148 136 / 0.2); border-radius: 12px; padding: 10px 14px; margin-bottom: 8px; }
-[data-app="droplet-mac-cleaner"] .detail-list > div + div { border-top: 1px solid rgb(13 148 136 / 0.2); }
-[data-app="droplet-mac-cleaner"] .btn-primary { background: linear-gradient(180deg, #14b8a6, #0f766e); }

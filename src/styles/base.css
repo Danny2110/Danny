@@ -2,11 +2,11 @@
 *, *::before, *::after { box-sizing: border-box; }
 :root {
   --accent: #4F5BD5;
-  --surface: #ffffff;
-  --ink: #171a21;
-  --muted: #5b6472;
-  --line: color-mix(in srgb, currentColor 14%, transparent);
-  --radius: 16px;
+  --surface: #fafafc;
+  --ink: #14161c;
+  --muted: #5f6673;
+  --line: rgb(20 22 28 / 0.1);
+  --radius: 18px;
   --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
   --max: 1080px;
 }
@@ -40,7 +40,7 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
   max-width: var(--max); margin: 0 auto; padding: 12px 20px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--ink); }
+.brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--ink); }
 .brand:hover { text-decoration: none; }
 .nav-links { display: flex; gap: 18px; }
 .nav-links a { color: var(--muted); font-weight: 600; font-size: 0.95rem; }
@@ -71,3 +71,7 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
 .pill-beta { color: var(--accent); border-color: var(--accent); }
 .pill-drop { color: var(--accent); border-color: var(--accent); }
 .card-cat { font-size: 0.8rem; color: var(--muted); }
+
+/* app page polish */
+.app-hero h1, .hub-hero h1 { text-wrap: balance; }
+.app-page .about p:first-child::first-letter { font-weight: 700; }

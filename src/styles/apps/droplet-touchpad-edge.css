@@ -1,4 +1,0 @@
-/* Touchpad Edge — gesture lab: indigo wash, corner-pad diagram feel. */
-[data-app="droplet-touchpad-edge"] .app-bg { background: radial-gradient(700px 320px at 80% -10%, rgb(129 140 248 / 0.22), transparent 60%), #f6f7fb; }
-[data-app="droplet-touchpad-edge"] .feature { border-radius: 20px 6px 20px 6px; background: #fff; border-color: rgb(129 140 248 / 0.35); }
-[data-app="droplet-touchpad-edge"] .btn-primary { background: linear-gradient(180deg, #818cf8, #4f46e5); }

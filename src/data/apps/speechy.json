@@ -10,7 +10,7 @@
     "kind": "file",
     "label": "Download for Mac",
     "note": "Needs Ollama with the phonon model: ollama pull phonon. Unsigned build: right-click \u2192 Open on first launch.",
-    "path": "/downloads/Phonon-1.0.0.zip"
+    "path": "/downloads/Speechy-1.0.0.zip"
   },
   "features": [
     {
@@ -31,10 +31,10 @@
     }
   ],
   "hero": "",
-  "icon": "apps/phonon/icon.png",
+  "icon": "apps/speechy/icon.png",
   "kind": "app",
   "links": [],
-  "name": "Phonon",
+  "name": "Speechy",
   "order": 8,
   "requirements": [
     "macOS 13 or later",
@@ -42,7 +42,7 @@
     "Ollama 0.40.9+ with the phonon model"
   ],
   "screenshots": [],
-  "slug": "phonon",
+  "slug": "speechy",
   "status": "stable",
   "tagline": "Local text-to-speech, one keystroke away.",
   "theme": {
@@ -54,5 +54,6 @@
     "radius": 16,
     "surface": "#12101d"
   },
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "featured": false
 }

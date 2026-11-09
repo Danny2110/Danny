@@ -1,5 +1,0 @@
-/* Uninstaller — warning-red utility, stark rows, decisive button. */
-[data-app="droplet-uninstaller"] .app-bg { background: radial-gradient(700px 320px at 20% -10%, rgb(239 68 68 / 0.14), transparent 60%), #f6f7fb; }
-[data-app="droplet-uninstaller"] .feature { border-left: 3px solid #ef4444; background: #fff; }
-[data-app="droplet-uninstaller"] .btn-primary { background: linear-gradient(180deg, #f05252, #dc2626); }
-[data-app="droplet-uninstaller"] .dl-note { color: #b91c1c; }

@@ -1,6 +1,6 @@
 // hub.js — search + category filter on the hub; no-op on other pages. No deps.
 (function () {
-  var grid = document.querySelectorAll(".app-card");
+  var grid = document.querySelectorAll(".card");
   var search = document.getElementById("search");
   var empty = document.getElementById("no-results");
   if (!search || !grid.length) return;
@@ -20,7 +20,7 @@
     });
     // hide section headers with no visible cards
     document.querySelectorAll(".app-section").forEach(function (sec) {
-      var cards = sec.querySelectorAll(".app-card");
+      var cards = sec.querySelectorAll(".card");
       if (!cards.length) return;
       var anyVisible = Array.prototype.some.call(cards, function (c) {
         return !c.classList.contains("is-hidden");

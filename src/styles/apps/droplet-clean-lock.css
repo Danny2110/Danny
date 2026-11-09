@@ -1,5 +1,0 @@
-/* Clean Lock — blackout mode: dark page, ESC-key hint styling. */
-[data-app="droplet-clean-lock"] { --surface: #101014; --ink: #eef1f7; --muted: #9aa3b2; }
-[data-app="droplet-clean-lock"] .app-bg { background: radial-gradient(700px 320px at 50% -10%, rgb(100 116 139 / 0.3), transparent 60%), #101014; }
-[data-app="droplet-clean-lock"] .feature { background: rgb(255 255 255 / 0.04); border-color: rgb(255 255 255 / 0.12); }
-[data-app="droplet-clean-lock"] .btn-primary { background: #e2e8f0; color: #0f172a; }

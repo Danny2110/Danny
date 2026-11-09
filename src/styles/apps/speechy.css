@@ -1,0 +1,16 @@
+/* Phonon — waveform violet: dark stage, glowing bars behind the hero. */
+[data-app="speechy"] .app-bg {
+  background:
+    radial-gradient(880px 400px at 50% -10%, rgb(155 123 255 / 0.25), transparent 60%),
+    #12101d;
+}
+[data-app="speechy"] .app-hero { position: relative; }
+[data-app="speechy"] .app-hero::before {
+  content: ""; position: absolute; inset: auto 0 -8px 0; height: 56px; z-index: -1; opacity: 0.5;
+  background: repeating-linear-gradient(90deg, #9b7bff 0 6px, transparent 6px 14px);
+  mask-image: linear-gradient(90deg, transparent, #000 20% 80%, transparent);
+  filter: blur(1px);
+}
+[data-app="speechy"] .feature h3 { color: #c4b3ff; font-family: ui-monospace, Menlo, monospace; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.08em; }
+[data-app="speechy"] .feature { background: rgb(155 123 255 / 0.06); border-color: rgb(155 123 255 / 0.3); }
+[data-app="speechy"] kbd, [data-app="speechy"] .hero-text .lede { font-family: ui-monospace, Menlo, monospace; }

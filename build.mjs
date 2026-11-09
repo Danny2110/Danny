@@ -141,7 +141,6 @@ function pillHTML(app) {
   const bits = [];
   if (app.version) bits.push(`<span class="pill">v${esc(app.version)}</span>`);
   if (app.status === "beta") bits.push(`<span class="pill pill-beta">beta</span>`);
-  if (app.kind === "droplet") bits.push(`<span class="pill pill-drop">Droplet</span>`);
   return bits.join("");
 }
 
@@ -176,27 +175,32 @@ function checkAsset(rel) {
   return existsSync(path.join(ASSETS_SRC, rel));
 }
 
-function cardHTML(app) {
+function cardHTML(app, featured) {
   const icon = assetURL(app.icon);
   const iconHTML = icon
-    ? `<img class="card-icon" src="${esc(icon)}" alt="" width="64" height="64" loading="lazy">`
+    ? `<img class="card-icon" src="${esc(icon)}" alt="" width="${featured ? 96 : 64}" height="${featured ? 96 : 64}" loading="lazy">`
     : `<span class="card-icon card-letter" aria-hidden="true">${esc(app.name.slice(0, 1))}</span>`;
-  return `<article class="app-card" data-name="${esc(app.name.toLowerCase())}" data-category="${esc(app.category || "")}" data-kind="${esc(app.kind || "app")}">
-    <a class="card-link" href="/${esc(app.slug)}/" aria-label="${esc(app.name)} — ${esc(app.tagline)}">
-      ${iconHTML}
-      <span class="card-text">
-        <span class="card-name">${esc(app.name)}</span>
-        <span class="card-tag">${esc(app.tagline)}</span>
-        <span class="card-meta">${pillHTML(app)}${app.category ? `<span class="card-cat">${esc(app.category)}</span>` : ""}</span>
-      </span>
-      <span class="card-arrow" aria-hidden="true">→</span>
-    </a>
-  </article>`;
+  const dl = downloadInfo(app);
+  const dlLabel = dl.kind === "file"
+    ? `${esc(dl.label)}${dl.size ? ` · ${esc(dl.size)}` : ""}`
+    : dl.kind === "link" ? esc(dl.label) : null;
+  return `<a class="card${featured ? " card-featured" : ""}" style="--card-accent:${esc(app.accent || "#4F5BD5")}" data-name="${esc(app.name.toLowerCase())}" data-category="${esc(app.category || "")}" href="/${esc(app.slug)}/" aria-label="${esc(app.name)} — ${esc(app.tagline)}">
+    <span class="card-glow" aria-hidden="true"></span>
+    ${iconHTML}
+    <span class="card-text">
+      <span class="card-name">${esc(app.name)}</span>
+      <span class="card-tag">${esc(app.tagline)}</span>
+      <span class="card-meta">${pillHTML(app)}${app.category ? `<span class="card-cat">${esc(app.category)}</span>` : ""}</span>
+      ${featured && app.description?.[0] ? `<span class="card-blurb">${esc(app.description[0])}</span>` : ""}
+      ${featured && dlLabel ? `<span class="card-dl">${dlLabel} →</span>` : ""}
+    </span>
+    <span class="card-arrow" aria-hidden="true">→</span>
+  </a>`;
 }
 
 function hubHTML(site, apps) {
-  const standalone = apps.filter((a) => a.kind !== "droplet");
-  const droplets = apps.filter((a) => a.kind === "droplet");
+  const featured = apps.find((a) => a.featured) || apps[0];
+  const rest = apps.filter((a) => a !== featured);
   const cats = [...new Set(apps.map((a) => a.category).filter(Boolean))].sort();
   return `${headHTML({ title: `${site.title} — Mac apps`, description: site.description || site.tagline || "", site })}
 <body class="hub" style="--accent:${esc(site.theme?.accent || "#4F5BD5")}">
@@ -213,19 +217,18 @@ ${navHTML(site, null)}
       </div>
     </div>
   </section>
-  <section class="app-section" id="apps">
-    <h2>Mac apps</h2>
-    <div class="app-grid">
-      ${standalone.map(cardHTML).join("\n      ")}
+  <section class="app-section app-featured" id="featured">
+    <p class="eyebrow">Featured</p>
+    <div class="app-grid app-grid-featured">
+      ${cardHTML(featured, true)}
     </div>
   </section>
-  ${droplets.length ? `<section class="app-section" id="droplets">
-    <h2>${esc(site.hub?.dropletsHeading || "Droplets")}</h2>
-    <p class="section-intro">${esc(site.hub?.dropletsIntro || "")}</p>
+  <section class="app-section" id="apps">
+    <h2>All apps</h2>
     <div class="app-grid">
-      ${droplets.map(cardHTML).join("\n      ")}
+      ${rest.map((a) => cardHTML(a, false)).join("\n      ")}
     </div>
-  </section>` : ""}
+  </section>
   <p class="no-results" id="no-results" hidden>No apps match that search.</p>
 </main>
 ${footerHTML(site)}
@@ -259,7 +262,7 @@ function appPageHTML(site, app) {
 <div class="app-bg" aria-hidden="true"></div>
 ${navHTML(site, app.slug)}
 <main class="app-main">
-  <nav class="crumbs"><a href="/">← All apps</a>${app.kind === "droplet" ? ` <span class="crumb-sep">/</span> <a href="/#droplets">Droplets</a>` : ""}</nav>
+  <nav class="crumbs"><a href="/">← All apps</a></nav>
   <section class="app-hero">
     <div class="hero-icon">${icon ? `<img src="${esc(icon)}" alt="${esc(app.name)} icon" width="128" height="128">` : `<span class="hero-letter">${esc(app.name.slice(0, 1))}</span>`}</div>
     <div class="hero-text">
