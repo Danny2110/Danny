@@ -4,16 +4,19 @@ Static site built by `node build.mjs` into `dist/`, deployed to GitHub Pages by 
 
 Live URL: https://danny2110.github.io
 
-## 1. Create the repository
+## 1. Choose the repository
 
-The repo must be named exactly `Danny2110.github.io` (the GitHub *user site*), owned by the `Danny2110` account.
+The site supports both a GitHub user-site repository named `Danny2110.github.io`
+and a project repository such as `Danny`. The build reads `GITHUB_REPOSITORY`
+in Actions and prefixes internal URLs with the project repository name when
+needed, so styles, images, navigation, and downloads work at either URL.
 
 ```bash
 cd /Users/danny/Sites/danny2110.github.io
 git init -b main
 git add .
 git commit -m "Initial site"
-gh repo create Danny2110/Danny2110.github.io --public --source=. --remote=origin --push
+gh repo create Danny2110/Danny --public --source=. --remote=origin --push
 ```
 
 No remote yet? Create it on github.com as a public repo, then:

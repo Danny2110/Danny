@@ -20,6 +20,15 @@ const ASSETS_SRC = path.resolve(ROOT, arg("--assets", "src/assets"));
 const OUT_DIR = path.resolve(ROOT, arg("--out", "dist"));
 const SITE_PATH = path.join(ROOT, "src/data/site.json");
 
+// GitHub Pages serves project sites below /<repository>/ and user sites at
+// the domain root. Local builds stay root-based.
+const repositoryName = (process.env.GITHUB_REPOSITORY || "").split("/").pop() || "";
+const BASE_PATH = repositoryName && !/^.+\.github\.io$/i.test(repositoryName)
+  ? `/${repositoryName}` : "";
+function sitePath(pathname) {
+  return `${BASE_PATH}${pathname.startsWith("/") ? pathname : `/${pathname}`}`;
+}
+
 const errors = [];
 function fail(msg) { errors.push(msg); }
 
@@ -105,8 +114,8 @@ function headHTML({ title, description, site, app, extraCSS = [] }) {
     ? `--surface:${esc(v.surface)};--ink:${esc(v.ink)};--muted:${esc(v.muted)};--accent:${esc(v.accent)};--radius:${v.radius}px;--font-body:${fontStack(v.font)}`
     : "";
   const css = (app
-    ? ["/styles/base.css", "/styles/app.css", ...extraCSS]
-    : ["/styles/hub.css", ...extraCSS])
+    ? [sitePath("/styles/base.css"), sitePath("/styles/app.css"), ...extraCSS]
+    : [sitePath("/styles/hub.css"), ...extraCSS])
     .map((h) => `  <link rel="stylesheet" href="${h}">`).join("\n");
   return `<!DOCTYPE html>
 <html lang="en"${v ? ` data-app="${esc(app.slug)}" data-mode="${v.mode}" data-chrome="${esc(v.chrome)}" data-layout="${esc(v.layout)}"` : ` data-mode="${esc(site.theme?.mode || "light")}"`}>
@@ -115,8 +124,8 @@ function headHTML({ title, description, site, app, extraCSS = [] }) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
-  <link rel="icon" href="/assets/site/favicon.svg" type="image/svg+xml">
-  <link rel="alternate icon" href="/assets/site/favicon.png" type="image/png">
+  <link rel="icon" href="${sitePath("/assets/site/favicon.svg")}" type="image/svg+xml">
+  <link rel="alternate icon" href="${sitePath("/assets/site/favicon.png")}" type="image/png">
 ${css}
 ${v ? `  <style>body{${bodyVars}}</style>` : ""}
 </head>`;
@@ -124,25 +133,25 @@ ${v ? `  <style>body{${bodyVars}}</style>` : ""}
 
 function navHTML(site, current) {
   return `<header class="site-nav"><div class="nav-inner">
-    <a class="brand" href="/"><img src="/assets/site/favicon.svg" alt="" width="22" height="22"><span>${esc(site.name || site.title)}</span></a>
+    <a class="brand" href="${sitePath("/")}"><img src="${sitePath("/assets/site/favicon.svg")}" alt="" width="22" height="22"><span>${esc(site.name || site.title)}</span></a>
     <nav class="nav-links">
-      <a href="/"${!current ? ' aria-current="page"' : ""}>Apps</a>
-      <a href="/downloads/">Downloads</a>
+      <a href="${sitePath("/")}"${!current ? ' aria-current="page"' : ""}>Apps</a>
+      <a href="${sitePath("/downloads/")}">Downloads</a>
     </nav>
   </div></header>`;
 }
 
 function footerHTML(site, apps) {
-  const appLinks = (apps || []).map((a) => `<li><a href="/${esc(a.slug)}/">${esc(a.name)}</a></li>`).join("");
+  const appLinks = (apps || []).map((a) => `<li><a href="${sitePath(`/${a.slug}/`)}">${esc(a.name)}</a></li>`).join("");
   return `<footer class="site-footer"><div class="footer-inner">
     <div class="footer-brand">
-      <a class="brand" href="/"><img src="/assets/site/favicon.svg" alt="" width="24" height="24"><span>${esc(site.name || site.title)}</span></a>
+      <a class="brand" href="${sitePath("/")}"><img src="${sitePath("/assets/site/favicon.svg")}" alt="" width="24" height="24"><span>${esc(site.name || site.title)}</span></a>
       <p>${esc(site.tagline || "")}</p>
     </div>
     ${appLinks ? `<div class="footer-col"><h3>Apps</h3><ul>${appLinks}</ul></div>` : ""}
     <div class="footer-col"><h3>Site</h3><ul>
-      <li><a href="/">All apps</a></li>
-      <li><a href="/downloads/">Downloads</a></li>
+      <li><a href="${sitePath("/")}">All apps</a></li>
+      <li><a href="${sitePath("/downloads/")}">Downloads</a></li>
       <li><a href="https://github.com/Danny2110">GitHub</a></li>
     </ul></div>
   </div>
@@ -159,7 +168,7 @@ function pillHTML(app) {
 function downloadButtonHTML(app) {
   const d = downloadInfo(app);
   if (d.kind === "file") {
-    return `<a class="btn btn-primary" href="${esc(d.path)}" download>${esc(d.label)}${d.size ? ` · ${esc(d.size)}` : ""}</a>
+    return `<a class="btn btn-primary" href="${esc(sitePath(d.path))}" download>${esc(d.label)}${d.size ? ` · ${esc(d.size)}` : ""}</a>
       ${d.note ? `<p class="dl-note">${esc(d.note)}</p>` : `<p class="dl-note">Unsigned build: right-click → Open on first launch.</p>`}`;
   }
   if (d.kind === "link") {
@@ -203,7 +212,7 @@ const GLASS_GATE = `<script>\n(function () {\n  var isSafari = /^((?!chrome|chro
 function assetURL(rel) {
   if (!rel) return null;
   if (/^https?:\/\//.test(rel)) return rel;
-  return `/assets/${rel}`;
+  return sitePath(`/assets/${rel}`);
 }
 
 // test-mode remap: when --assets points at tests/fixtures/files, app JSON
@@ -221,7 +230,7 @@ function cardHTML(app, featured) {
   const dlLabel = dl.kind === "file"
     ? `${esc(dl.label)}${dl.size ? ` · ${esc(dl.size)}` : ""}`
     : dl.kind === "link" ? esc(dl.label) : null;
-  return `<a class="card${featured ? " card-featured" : ""}" style="--card-accent:${esc(app.accent || "#4F5BD5")}" data-name="${esc(app.name.toLowerCase())}" data-category="${esc(app.category || "")}" href="/${esc(app.slug)}/" aria-label="${esc(app.name)} — ${esc(app.tagline)}">
+  return `<a class="card${featured ? " card-featured" : ""}" style="--card-accent:${esc(app.accent || "#4F5BD5")}" data-name="${esc(app.name.toLowerCase())}" data-category="${esc(app.category || "")}" href="${sitePath(`/${app.slug}/`)}" aria-label="${esc(app.name)} — ${esc(app.tagline)}">
     <span class="card-glow" aria-hidden="true"></span>
     ${iconHTML}
     <span class="card-text">
@@ -240,7 +249,7 @@ function glassCardHTML(app, i) {
   const iconHTML = icon
     ? `<img class="card__icon" src="${esc(icon)}" alt="" loading="lazy" />`
     : `<div class="card__icon card__icon--tile">${esc(app.name.slice(0, 1))}</div>`;
-  const href = app.slug === "notesy" ? "https://danny2110.github.io/Notesy/" : `/${esc(app.slug)}/`;
+  const href = app.slug === "notesy" ? "https://danny2110.github.io/Notesy/" : sitePath(`/${app.slug}/`);
   const inner = `
     ${iconHTML}
     <div class="card__body">
@@ -252,7 +261,7 @@ function glassCardHTML(app, i) {
 
 function hubHTML(site, apps) {
   const identityName = site.author || site.name || site.title;
-  const avatar = existsSync(path.join(ROOT, "src/assets/site/avatar.png")) ? "/assets/site/avatar.png" : "/assets/site/favicon.png";
+  const avatar = existsSync(path.join(ROOT, "src/assets/site/avatar.png")) ? sitePath("/assets/site/avatar.png") : sitePath("/assets/site/favicon.png");
   return `${headHTML({ title: `${identityName} — Apps`, description: site.description || site.tagline || "", site })}
 <body class="hub">
 ${glassDefsHTML()}
@@ -266,7 +275,7 @@ ${glassDefsHTML()}
   </section>
 </main>
 <footer class="hub-foot">
-  <a href="/downloads/">Downloads</a>
+  <a href="${sitePath("/downloads/")}">Downloads</a>
   <span aria-hidden="true">·</span>
   <a href="https://github.com/Danny2110">GitHub</a>
 </footer>
@@ -288,7 +297,7 @@ function appPageHTML(site, app) {
   const reqs = Array.isArray(app.requirements) ? app.requirements : [];
   const links = Array.isArray(app.links) ? app.links : [];
   const perAppCSS = existsSync(path.join(ROOT, "src/styles/apps", `${app.slug}.css`))
-    ? [`/styles/apps/${app.slug}.css`] : [];
+    ? [sitePath(`/styles/apps/${app.slug}.css`)] : [];
   const gallery = shots.length
     ? `<section class="shots"><h2>Screens</h2><div class="shot-grid">${shots.map((s) => `<figure class="shot"><img src="${esc(assetURL(s.src))}" alt="${esc(s.alt || app.name)}" loading="lazy"></figure>`).join("")}</div></section>`
     : "";
@@ -300,7 +309,7 @@ function appPageHTML(site, app) {
 <div class="app-bg" aria-hidden="true"></div>
 ${navHTML(site, app.slug)}
 <main class="app-main">
-  <nav class="crumbs"><a href="/">← All apps</a></nav>
+  <nav class="crumbs"><a href="${sitePath("/")}">← All apps</a></nav>
   <section class="app-hero">
     <div class="hero-icon">${icon ? `<img src="${esc(icon)}" alt="${esc(app.name)} icon" width="128" height="128">` : `<span class="hero-letter">${esc(app.name.slice(0, 1))}</span>`}</div>
     <div class="hero-text">
@@ -318,13 +327,13 @@ ${navHTML(site, app.slug)}
     <dl class="detail-list">
       <div><dt>Version</dt><dd>${esc(app.version || "—")}${app.status === "beta" ? " (beta)" : ""}</dd></div>
       ${reqs.length ? `<div><dt>Runs on</dt><dd>${reqs.map(esc).join("<br>")}</dd></div>` : ""}
-      ${dl.kind === "file" ? `<div><dt>Download</dt><dd><a href="${esc(dl.path)}">${esc(dl.path.split("/").pop())}</a>${dl.size ? ` · ${esc(dl.size)}` : ""}</dd></div>` : ""}
+      ${dl.kind === "file" ? `<div><dt>Download</dt><dd><a href="${esc(sitePath(dl.path))}">${esc(dl.path.split("/").pop())}</a>${dl.size ? ` · ${esc(dl.size)}` : ""}</dd></div>` : ""}
       ${links.length ? `<div><dt>Links</dt><dd>${links.map((l) => `<a href="${esc(l.url)}">${esc(l.label)}</a>`).join(" · ")}</dd></div>` : ""}
     </dl>
   </section>
 </main>
 ${footerHTML(site, [app])}
-<script src="/scripts/hub.js" defer></script>
+<script src="${sitePath("/scripts/hub.js")}" defer></script>
 </body>
 </html>
 `;
@@ -333,18 +342,18 @@ ${footerHTML(site, [app])}
 // ---------------- downloads index ----------------
 function downloadsHTML(site, apps) {
   const identityName = site.author || site.name || site.title;
-  const avatar = existsSync(path.join(ROOT, "src/assets/site/avatar.png")) ? "/assets/site/avatar.png" : "/assets/site/favicon.png";
+  const avatar = existsSync(path.join(ROOT, "src/assets/site/avatar.png")) ? sitePath("/assets/site/avatar.png") : sitePath("/assets/site/favicon.png");
   const withFiles = apps.filter((a) => a.download?.kind === "file" && a.download?.path);
   const rows = withFiles.map((a) => {
     let size = null;
     try { size = humanBytes(statSync(path.join(ROOT, "public", a.download.path.replace(/^\//, ""))).size); } catch {}
-    return `<tr><td><a href="/${esc(a.slug)}/">${esc(a.name)}</a></td><td>v${esc(a.version || "—")}</td><td><a href="${esc(a.download.path)}" download>${esc(a.download.path.split("/").pop())}</a></td><td>${esc(size || "—")}</td></tr>`;
+    return `<tr><td><a href="${sitePath(`/${a.slug}/`)}">${esc(a.name)}</a></td><td>v${esc(a.version || "—")}</td><td><a href="${esc(sitePath(a.download.path))}" download>${esc(a.download.path.split("/").pop())}</a></td><td>${esc(size || "—")}</td></tr>`;
   }).join("\n      ");
   return `${headHTML({ title: `Downloads — ${site.title}`, description: `Every downloadable build for ${site.name}.`, site })}
 <body class="hub dl-page">
 <main class="page">
   <header class="identity">
-    <a href="/"><img class="identity__avatar" src="${avatar}" alt="" /></a>
+    <a href="${sitePath("/")}"><img class="identity__avatar" src="${avatar}" alt="" /></a>
     <div>
       <h1 class="dl-title">Downloads</h1>
       <p class="dl-sub">Every build in one place. Unsigned developer builds: right-click → Open on first launch.</p>
@@ -356,7 +365,7 @@ function downloadsHTML(site, apps) {
   </table></div>
 </main>
 <footer class="hub-foot">
-  <a href="/">← All apps</a>
+  <a href="${sitePath("/")}">← All apps</a>
 </footer>
 </body>
 </html>
@@ -414,7 +423,7 @@ async function main() {
   await writeFile(path.join(OUT_DIR, "downloads", "index.html"), await downloadsHTML(site, apps));
   await writeFile(path.join(OUT_DIR, "404.html"),
     `${headHTML({ title: `Not found — ${site.title}`, description: "This page does not exist.", site })}
-<body class="hub"><div class="notfound"><h1>Lost?</h1><p>That page is not here. <a href="/">Back to the apps →</a></p></div></body>
+<body class="hub"><div class="notfound"><h1>Lost?</h1><p>That page is not here. <a href="${sitePath("/")}">Back to the apps →</a></p></div></body>
 </html>`);
 
   // verify referenced assets exist
